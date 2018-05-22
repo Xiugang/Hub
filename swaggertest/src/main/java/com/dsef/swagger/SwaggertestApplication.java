@@ -1,4 +1,4 @@
-package com.dsef.swagger.swaggertest;
+package com.dsef.swagger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

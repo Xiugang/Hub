@@ -1,4 +1,4 @@
-package com.dsef.swagger.swaggertest;
+package com.dsef.swagger.Config;
 
 /**
  * created by DSEF on 2018/5/17.
