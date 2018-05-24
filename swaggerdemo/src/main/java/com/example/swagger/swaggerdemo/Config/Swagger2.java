@@ -1,9 +1,7 @@
-package com.dsef.swagger.Config;
+package com.example.swagger.swaggerdemo.Config;
 
-/**
- * created by DSEF on 2018/5/17.
- **/
-
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -15,14 +13,12 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * Swagger2配置类
- * 在与spring boot集成时，放在与Application.java同级的目录下。
- * 通过@Configuration注解，让Spring来加载该类配置。
- * 再通过@EnableSwagger2注解来启用Swagger2。
- */
+ * created by DSEF on 2018/5/23.
+ **/
 @Configuration
 @EnableSwagger2
-public class Swagger2{
+@AutoConfigureAfter(WebMvcAutoConfiguration.class)
+public class Swagger2 {
 
     /**
      * 创建API应用
@@ -37,7 +33,7 @@ public class Swagger2{
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.dsef.swagger.swaggertest"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.swagger.swaggerdemo"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -45,15 +41,15 @@ public class Swagger2{
     /**
      * 创建该API的基本信息（这些基本信息会展现在文档页面中）
      * 访问地址：http://项目实际地址/swagger-ui.html
+     *
      * @return
      */
-
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Boot中使用Swagger2构建RESTful APIs")
+                .title("三层结构")
                 .description("更多请关注http://www.baidu.com")
                 .termsOfServiceUrl("http://www.baidu.com")
-                .contact("DSEF")
+                .contact("D.S.E.F.")
                 .version("1.0")
                 .build();
     }
